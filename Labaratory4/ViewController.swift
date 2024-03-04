@@ -10,6 +10,11 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var lableExample: UILabel!
+    @IBOutlet weak var inputText: UITextField!
+    
+    
+    let randNumber = Int.random(in: 0...100)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +22,17 @@ class ViewController: UIViewController {
     }
 
     @IBAction func clickBtn(_ sender: UIButton) {
-        lableExample.text = "I TOLD YA.NOT TO CLICK"
-        lableExample.textColor = UIColor.red
-        lableExample.font = UIFont.italicSystemFont(ofSize: 40.0)
+        if let text = inputText.text, let intValue = Int(text) {
+            if intValue == randNumber {
+                lableExample.text = "U GUESSED"
+            } else if (intValue > randNumber) {
+                lableExample.text = "LESS"
+            } else {
+                lableExample.text = "MORE"
+            }
+        } else {
+            lableExample.text = "ENTER NUMBER PLEASE"
+        }
     }
     
 }
