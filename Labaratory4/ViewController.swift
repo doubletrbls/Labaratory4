@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var inputText: UITextField!
     
     
-    let randNumber = Int.random(in: 0...100)
+    var randNumber = Int.random(in: 0...100)
     
     
     override func viewDidLoad() {
@@ -25,10 +25,16 @@ class ViewController: UIViewController {
         if let text = inputText.text, let intValue = Int(text) {
             if intValue == randNumber {
                 lableExample.text = "U GUESSED"
+                lableExample.textColor = UIColor.green
+                lableExample.font = UIFont.boldSystemFont(ofSize: 24.0)
             } else if (intValue > randNumber) {
                 lableExample.text = "LESS"
+                lableExample.textColor = UIColor.red
+                lableExample.font = UIFont.boldSystemFont(ofSize: 20.0)
             } else {
                 lableExample.text = "MORE"
+                lableExample.textColor = UIColor.red
+                lableExample.font = UIFont.boldSystemFont(ofSize: 20.0)
             }
         } else {
             lableExample.text = "ENTER NUMBER PLEASE"
